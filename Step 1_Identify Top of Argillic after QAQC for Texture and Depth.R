@@ -1,4 +1,3 @@
-
 #read in raw FSSC data
 setwd("")
 data=data.frame(read.csv("FSSC_Raw Data.csv",header=TRUE))
