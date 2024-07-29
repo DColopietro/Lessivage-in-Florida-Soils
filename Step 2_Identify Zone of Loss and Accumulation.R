@@ -1,4 +1,4 @@
-#set your working directory
+#set working directory
 setwd("")
 
 
