@@ -1,7 +1,7 @@
 # Lessivage-in-Florida-Soils
 Determining the depth and degree of lessivage (clay translocation) in Florida soils using the FSSC database and the USDA Soil Taxonomy definiton of an Argillic horizon. 
 
-Lithologic discontinuities represent zones of abrupt or gradual change in the lithology (texture, structure, fabric, geochemistry, and/or mineralogy) of soils. To differentiate textural changes made from distinct depositional events from pedogenically-induced changes called lessivage, we used the uniformity index (UI) created by Creemans and Mokma (1986). To further support the UI analysis, we looked at the sand size distribution by horizon for each profile which was described as having an argillic horizon. If no depositional event occurred, then the difference between the sand size distribution should be small, since quartz is highly resistant to weathering and the sand fraction is immobile.
+To differentiate textural changes made from distinct depositional events from pedogenically-induced changes called lessivage, we used the uniformity index (UI) created by Creemans and Mokma (1986). To further support the UI analysis, we looked at the sand size distribution by horizon for each profile which was described as having an argillic horizon. If no depositional event occurred, then the difference between the sand size distribution should be small, since quartz is highly resistant to weathering and the sand fraction is immobile.
 
 The depth of lessivage was defined as the top of the argillic horizon (illuvial zone). 
 
