@@ -1,4 +1,4 @@
-#set your working directory
+#set working directory
 setwd("")
 
 #read in data for the positive FSSC profile horizons after profiles with UI>0.8 have been removed 
