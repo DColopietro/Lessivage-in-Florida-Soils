@@ -1,7 +1,7 @@
 #set working directory
 setwd("")
 
-data=read.table("clipboard",sep="\t",quote=NULL,header=TRUE)
+data=data.frame(read.csv("SandSizeDistribution.csv",header=TRUE))
 str(data)
 
 
