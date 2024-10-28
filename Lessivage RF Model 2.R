@@ -1,7 +1,7 @@
 #set working directory
 setwd("D:/Lessivage in Florida Soils/Lessivage Data")
 
-data=data.frame(read.csv("Profile Database.csv",header=TRUE))
+data=data.frame(read.csv("Profile Database2.csv",header=TRUE))
 str(data)
 
 
