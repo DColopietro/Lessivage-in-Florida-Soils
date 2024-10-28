@@ -5,11 +5,6 @@ setwd("")
 Horizons=data.frame(read.csv("Horizon Database_1.csv",header=TRUE))
 str(Horizons)
 
-#read in data for the positive FSSC profiles after profiles with UI>0.8 have been removed 
-Profiles=data.frame(read.csv("Profile Database.csv",header=TRUE))
-str(Profiles)
-
-
 #for loops to identify the thickness of zones of accumulation (horizons below "top") in each profile
 holder=data.frame()
 profiles=(unique(Horizons$ID))
