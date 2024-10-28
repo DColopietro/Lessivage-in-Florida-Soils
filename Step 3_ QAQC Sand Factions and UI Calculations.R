@@ -8,7 +8,7 @@ str(data)
 
 
 #read in entire FSSC database
-fssc=data.frame(read.csv("FSSC_All Data.csv",header=TRUE))
+fssc=data.frame(read.csv("FSSC_Raw Data.csv",header=TRUE))
 str(fssc)
 View(colnames(fssc))
 
