@@ -190,9 +190,3 @@ length(unique(combined$ID))
 
 #SAVE combined data
 write.csv(combined,"FSSC_Lessivage Positive Profiles with Loss and Acumulation.csv",row.names=F)
-
-
-
-
-
-
