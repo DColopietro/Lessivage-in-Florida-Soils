@@ -1,0 +1,44 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Lessivage in Florida Soils
+message: >-
+  If you use this dataset, please cite it using the metadata
+  from this file.
+type: dataset
+authors:
+  - given-names: Daniel
+    family-names: Colopietro
+    orcid: 'https://orcid.org/0000-0003-0124-5686'
+    affiliation: >-
+      Soil, Water, and Ecosystem Sciences Department, 
+      University of Florida, Gainesville, FL, USA. 
+  - given-names: Julio
+    family-names: Pachon
+    affiliation: >-
+      Sydney Institute of Agriculture, School of Life and
+      Environmental Sciences, The University of Sydney,
+      Eveleigh, NSW 2015, Australia
+    orcid: 'https://orcid.org/0000-0002-6378-7168'
+  - given-names: Allan
+    family-names: Bacon
+    affiliation: >-
+      Soil, Water, and Ecosystem Sciences Department,
+      University of Florida, Gainesville, FL, USA.
+    orcid: 'https://orcid.org/0000-0001-9757-8834'
+url: 'https://github.com/DColopietro/Lessivage-in-Florida-Soils'
+abstract: >-
+  Determining the depth and degree of lessivage (clay
+  translocation) in Florida soils using the FSSC database
+  and the USDA Soil Taxonomy definiton of an Argillic
+  horizon.
+keywords:
+  - Argillic Horizon
+  - Clay Translocation
+  - Lessivage
+  - Machine Learning
+  - 'Random Forest Modeling '
+  - Illuvial Zone
+  - Eluvial Zone
+license: MIT
