@@ -152,14 +152,3 @@ for (i in 701:734){
 legend(140,10,ncol=1,c("1-2mm","0.5-1mm","0.25-0.5mm","0.1-0.25mm","0.05-0.1mm"),
 	fill=c("navy","olivedrab","yellow","orange","red"))
 dev.off()
-
-
-
-
-
-
-
-
-
-
-
