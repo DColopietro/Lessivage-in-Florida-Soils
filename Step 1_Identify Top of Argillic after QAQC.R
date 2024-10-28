@@ -1,12 +1,11 @@
 #read in raw FSSC data
 setwd("")
-data=data.frame(read.csv("FSSC_Raw Data.csv",header=TRUE))
 
+data=data.frame(read.csv("FSSC_Raw Data.csv",header=TRUE))
 
 #see that you have 8272 horizons from 1288 profiles 
 str(data)
 length(unique(data$ID))
-
 
 #isolate the data of onterest (dataoi)
 #right now that is columns 1,5,32,33,39,40, and 41
