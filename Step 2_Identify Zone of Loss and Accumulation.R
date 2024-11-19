@@ -1,7 +1,3 @@
-#set working directory
-setwd("")
-
-
 #read in data for the the shallowest positive argillic in all FSSC profiles
 positives=data.frame(read.csv("FSSC_Lessivage Positive Profiles.csv",header=TRUE))
 str(positives)
