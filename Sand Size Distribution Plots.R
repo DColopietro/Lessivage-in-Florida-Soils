@@ -1,7 +1,6 @@
 data=data.frame(read.csv("SandSizeDistribution.csv",header=TRUE))
 str(data)
 
-
 sort(unique(data$ID))
 
 tiff(filename="SandSizeDist_1.tiff",width=10,height=7.5,units="in",res=300)
@@ -133,7 +132,6 @@ for (i in 631:700){
 	axis(1,at=seq(0,100,20),labels=c("","","","","",""))
 }
 dev.off()
-
 
 tiff(filename="SandSizeDist_11.tiff",width=10,height=7.5,units="in",res=300)
 par(oma=c(0.1,0.1,3.5,0.1),mar=c(1,3,0.7,1),mfrow=c(7,10),xpd=NA)
