@@ -1,6 +1,3 @@
-#set working directory
-setwd("")
-
 data=data.frame(read.csv("SandSizeDistribution.csv",header=TRUE))
 str(data)
 
