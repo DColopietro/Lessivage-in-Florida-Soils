@@ -1,6 +1,3 @@
-#set working directory
-setwd("")
-
 #read in data for the positive FSSC profile horizons after profiles with UI>0.8 have been removed 
 Horizons=data.frame(read.csv("Horizon Database.csv",header=TRUE))
 str(Horizons)
