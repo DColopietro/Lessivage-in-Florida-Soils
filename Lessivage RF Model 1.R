@@ -1,16 +1,10 @@
-#set working directory
-setwd("")
-
-
 data=data.frame(read.csv("Profile Database.csv",header=TRUE))
 str(data)
 
- 
 View(colnames(data))
 
 library(lattice)
 library(randomForest)
-
 
 #RandomForest model for depth of lessivage
 #Removed degree of lessivage, taxonomic information and average % for mineralogy of each zone
