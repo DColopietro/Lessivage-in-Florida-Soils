@@ -1,5 +1,4 @@
 #read in raw FSSC data
-
 data=data.frame(read.csv("FSSC_Raw Data.csv",header=TRUE))
 
 #see that you have 8272 horizons from 1288 profiles 
