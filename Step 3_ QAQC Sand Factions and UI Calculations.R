@@ -1,7 +1,3 @@
-#set working directory
-setwd("")
-
-
 #read in database of lessivage positive profiles with zone of loss and accumulation
 data=data.frame(read.csv("FSSC_Lessivage Positive Profiles with Loss and Acumulation.csv",header=TRUE))
 str(data)
