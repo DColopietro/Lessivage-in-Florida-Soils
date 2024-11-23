@@ -1,16 +1,16 @@
 #read in database of lessivage positive profiles with zone of loss and accumulation
-data=data.frame(read.csv("FSSC_Lessivage Positive Profiles with Loss and Acumulation.csv",header=TRUE))
+data=data.frame(read.csv("Lessivage Positive Profiles with Loss and Acumulation.csv",header=TRUE))
 str(data)
 
 
-#read in entire FSSC database
-fssc=data.frame(read.csv("FSSC_Raw Data.csv",header=TRUE))
-str(fssc)
-View(colnames(fssc))
+#read in entire database
+data1=data.frame(read.csv("Raw Data.csv",header=TRUE))
+str(data1)
+View(colnames(data1))
 
 
-#add sand size fractions data from FSSC to lessivage profiles
-data=merge(data,fssc[,c(1,34:38)],by="HorzIndex")
+#add sand size fractions data to lessivage profiles
+data=merge(data,data1[,c(1,34:38)],by="HorzIndex")
 
 
 #see that you have 5088 horizons from 756 profiles 
@@ -144,4 +144,4 @@ View(final)
 
 
 #save the final database
-write.csv(final,"FSSC_Final Lessivage Database.csv",row.names=F)
+write.csv(final,"Final Lessivage Database.csv",row.names=F)
