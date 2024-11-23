@@ -5,7 +5,7 @@ data=data.frame(read.csv("FSSC_Raw Data.csv",header=TRUE))
 str(data)
 length(unique(data$ID))
 
-#isolate the data of onterest (dataoi)
+#isolate the data of interest (dataoi)
 #right now that is columns 1,3,5,32,33,39,40, and 41
 View(colnames(data))
 dataoi=data[,c(1,3,5,32,33,39:41)]
