@@ -1,4 +1,4 @@
-#read in data for the positive FSSC profile horizons after profiles with UI>0.8 have been removed 
+#read in data for the positive profile horizons after profiles with UI>0.8 have been removed 
 Horizons=data.frame(read.csv("Horizon Database.csv",header=TRUE))
 str(Horizons)
 
@@ -32,7 +32,7 @@ Thickness=temp2
 View(Thickness)
 
 #SAVE data
-write.csv(Thickness,"FSSC_Thickness of Loss and Accumulation.csv",row.names=F)
+write.csv(Thickness,"Thickness of Loss and Accumulation.csv",row.names=F)
 
 
 #for loops to calculate the relative contribution of each horizon to the zone of loss 
@@ -55,7 +55,7 @@ Weightedcontribution=holder
 View(Weightedcontribution)
 
 #SAVE data
-write.csv(Weightedcontribution,"FSSC_WeightedcontributionLoss.csv",row.names=F)
+write.csv(Weightedcontribution,"WeightedcontributionLoss.csv",row.names=F)
 
 
 #for loops to calculate the relative contribution of each horizon to the zone of accumulation
@@ -78,10 +78,10 @@ Weightedcontribution=holder
 View(Weightedcontribution)
 
 #SAVE data
-write.csv(Weightedcontribution,"FSSC_WeightedcontributionGain.csv",row.names=F)
+write.csv(Weightedcontribution,"WeightedcontributionGain.csv",row.names=F)
 
 
-#read in data for the positive FSSC profile horizons after weighted contributions column was added 
+#read in data for the positive profile horizons after weighted contributions column was added 
 Horizons=data.frame(read.csv("Horizon Database_1.csv",header=TRUE))
 str(Horizons)
 
@@ -116,18 +116,18 @@ for(i in 1:length(profiles)){
 
 colnames(temp2)<-c("ID","E","I")
 
-FSSC_IE_ratio=temp2
-View(FSSC_IE_ratio)
+IE_ratio=temp2
+View(IE_ratio)
 
-FSSC_IE_ratio$IE=0
-View(FSSC_IE_ratio)
+IE_ratio$IE=0
+View(IE_ratio)
 
 #Calculating the IE ratio
-FSSC_IE_ratio$IE=FSSC_IE_ratio[,3]/FSSC_IE_ratio[,2]
-View(FSSC_IE_ratio)
+IE_ratio$IE=IE_ratio[,3]/IE_ratio[,2]
+View(IE_ratio)
 
 #SAVE data
-write.csv(FSSC_IE_ratio,"FSSC_IE_Ratio.csv",row.names=F)
+write.csv(IE_ratio,"IE_Ratio.csv",row.names=F)
 
 
 #for loops to calculate the average thickness weighted sand content in zones of loss and accumulation 
@@ -161,8 +161,8 @@ for(i in 1:length(profiles)){
 colnames(temp2)<-c("ID","E_Sand","I_Sand")
 View(temp2)
 
-FSSC_sand=temp2
-View(FSSC_sand)
+sand=temp2
+View(sand)
 
 
 #for loops to calculate the average thickness weighted silt content in zones of loss and accumulation 
@@ -196,8 +196,8 @@ for(i in 1:length(profiles)){
 colnames(temp2)<-c("ID","E_Silt","I_Silt")
 View(temp2)
 
-FSSC_silt=temp2
-View(FSSC_silt)
+silt=temp2
+View(silt)
 
 #for loops to calculate the average thickness weighted clay content in zones of loss and accumulation 
 holder=data.frame()
@@ -230,14 +230,13 @@ for(i in 1:length(profiles)){
 colnames(temp2)<-c("ID","E_Clay","I_Clay")
 View(temp2)
 
-FSSC_clay=temp2
-View(FSSC_clay)
-
+clay=temp2
+View(clay)
 
 #SAVE data
-write.csv(FSSC_clay,"FSSC_clay.csv",row.names=F)
-write.csv(FSSC_silt,"FSSC_silt.csv",row.names=F)
-write.csv(FSSC_sand,"FSSC_sand.csv",row.names=F)
+write.csv(clay,"clay.csv",row.names=F)
+write.csv(silt,"silt.csv",row.names=F)
+write.csv(sand,"sand.csv",row.names=F)
 
 
 #for loops to calculate the average thickness weighted organic carbon content in zones of loss and accumulation 
@@ -271,10 +270,10 @@ for(i in 1:length(profiles)){
 colnames(temp2)<-c("ID","E_OC","I_OC")
 View(temp2)
 
-FSSC_OC=temp2
+OC=temp2
 
 #SAVE data
-write.csv(FSSC_OC,"FSSC_OC.csv",row.names=F)
+write.csv(OC,"OC.csv",row.names=F)
 
 
 #for loops to calculate the average thickness weighted Porosity content in zones of loss and accumulation 
@@ -308,10 +307,10 @@ for(i in 1:length(profiles)){
 colnames(temp2)<-c("ID","E_F","I_F")
 View(temp2)
 
-FSSC_Porosity=temp2
+Porosity=temp2
 
 #SAVE data
-write.csv(FSSC_Porosity,"FSSC_Porosity.csv",row.names=F)
+write.csv(Porosity,"Porosity.csv",row.names=F)
 
 
 #for loops to calculate the average thickness weighted pHw in zones of loss and accumulation 
@@ -345,10 +344,10 @@ for(i in 1:length(profiles)){
 colnames(temp2)<-c("ID","E_pHw","I_pHw")
 View(temp2)
 
-FSSC_pHw=temp2
+pHw=temp2
 
 #SAVE data
-write.csv(FSSC_pHw,"FSSC_pHw.csv",row.names=F)
+write.csv(pHw,"pHw.csv",row.names=F)
 
 
 #for loops to calculate the average thickness weighted pHKCL in zones of loss and accumulation 
@@ -382,10 +381,10 @@ for(i in 1:length(profiles)){
 colnames(temp2)<-c("ID","E_pHkcl","I_pHkcl")
 View(temp2)
 
-FSSC_pHkcl=temp2
+pHkcl=temp2
 
 #SAVE data
-write.csv(FSSC_pHkcl,"FSSC_pHkcl.csv",row.names=F)
+write.csv(pHkcl,"pHkcl.csv",row.names=F)
 
 
 #for loops to calculate the average thickness weighted total exchangeable bases in zones of loss and accumulation 
@@ -421,10 +420,10 @@ for(i in 1:length(profiles)){
 colnames(temp2)<-c("ID","E_TEB","I_TEB")
 View(temp2)
 
-FSSC_TEB=temp2
+TEB=temp2
 
 #SAVE data
-write.csv(FSSC_TEB,"FSSC_TEB.csv",row.names=F)
+write.csv(TEB,"TEB.csv",row.names=F)
 
 
 
@@ -461,12 +460,10 @@ for(i in 1:length(profiles)){
 colnames(temp2)<-c("ID","E_CEC","I_CEC")
 View(temp2)
 
-FSSC_CEC=temp2
+CEC=temp2
 
 #SAVE data
-write.csv(FSSC_CEC,"FSSC_CEC.csv",row.names=F)
-
-
+write.csv(CEC,"CEC.csv",row.names=F)
 
 
 #for loops to calculate the average thickness weighted base saturation in zones of loss and accumulation 
@@ -502,10 +499,10 @@ for(i in 1:length(profiles)){
 colnames(temp2)<-c("ID","E_BaseSat","I_BaseSat")
 View(temp2)
 
-FSSC_BaseSat=temp2
+BaseSat=temp2
 
 #SAVE data
-write.csv(FSSC_BaseSat,"FSSC_BaseSat.csv",row.names=F)
+write.csv(BaseSat,"BaseSat.csv",row.names=F)
 
 
 
@@ -571,10 +568,9 @@ for(i in 1:length(profiles)){
 colnames(temp2)<-c("ID","E_EXTRACIDITY","I_EXTRACIDITY")
 View(temp2)
 
-FSSC_EXTRACIDITY=temp2
-View(FSSC_EXTRACIDITY)
+EXTRACIDITY=temp2
+View(EXTRACIDITY)
 
 
 #SAVE data
-write.csv(FSSC_EXTRACIDITY,"FSSC_Extracidity.csv",row.names=F)
-
+write.csv(EXTRACIDITY,"Extracidity.csv",row.names=F)
