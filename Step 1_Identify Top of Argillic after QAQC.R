@@ -1,5 +1,5 @@
 #read in raw FSSC data
-data=data.frame(read.csv("FSSC_Raw Data.csv",header=TRUE))
+data=data.frame(read.csv("Raw Data.csv",header=TRUE))
 
 #see that you have 8272 horizons from 1288 profiles 
 str(data)
@@ -69,7 +69,7 @@ str(dataoi)
 length(unique(dataoi$ID))
 
 #before evaluating for lessivage, save dataoi because it is a QAQC'd texture and depth dataset
-write.csv(dataoi,"FSSC_QAQCd for texture and depth.csv",row.names=F)
+write.csv(dataoi,"QAQCd for texture and depth.csv",row.names=F)
 
 #evaluate data of interest for criteria one
 criteria.one.horizons=data.frame() 
@@ -184,4 +184,4 @@ str(criteria.two.horizons)
 length(unique(criteria.two.horizons$ID))
 
 #combine positives for criteria one and two into a single dataframe and save it
-write.csv(rbind(criteria.one.horizons,criteria.two.horizons),"FSSC_Lessivage Positive Profiles.csv",row.names=F)
+write.csv(rbind(criteria.one.horizons,criteria.two.horizons),"Lessivage Positive Profiles.csv",row.names=F)
