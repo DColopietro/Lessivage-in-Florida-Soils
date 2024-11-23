@@ -1,11 +1,11 @@
 #read in data for the the shallowest positive argillic in all FSSC profiles
-positives=data.frame(read.csv("FSSC_Lessivage Positive Profiles.csv",header=TRUE))
+positives=data.frame(read.csv("Lessivage Positive Profiles.csv",header=TRUE))
 str(positives)
 
 
 #read in texture and depth QAQC'd FSSC data
-FSSC=data.frame(read.csv("FSSC_QAQCd for texture and depth.csv",header=TRUE))
-str(FSSC)
+data=data.frame(read.csv("QAQCd for texture and depth.csv",header=TRUE))
+str(data)
 
 
 #seperate positives into those from criteria one and criteria two
@@ -24,7 +24,7 @@ criteria.two.profiles=criteria.two$ID
 #subset QAQC'd data for profiles with a positive lessivage test according to criteria one
 criteria.one.data=c()
 for(i in 1:length(criteria.one.profiles)){
-	temp=subset(FSSC[,1:7],FSSC$ID==paste(criteria.one.profiles[i]))
+	temp=subset(data[,1:7],data$ID==paste(criteria.one.profiles[i]))
 	criteria.one.data=rbind(criteria.one.data,temp)
 }
 
@@ -32,7 +32,7 @@ for(i in 1:length(criteria.one.profiles)){
 #subset QAQC'd data for profiles with a positive lessivage test according to criteria two
 criteria.two.data=c()
 for(i in 1:length(criteria.two.profiles)){
-	temp=subset(FSSC[,1:7],FSSC$ID==paste(criteria.two.profiles[i]))
+	temp=subset(data[,1:7],data$ID==paste(criteria.two.profiles[i]))
 	criteria.two.data=rbind(criteria.two.data,temp)
 }
 
@@ -183,6 +183,5 @@ combined=rbind(criteria.one.data,criteria.two.data)
 str(combined)
 length(unique(combined$ID))
 
-
 #SAVE combined data
-write.csv(combined,"FSSC_Lessivage Positive Profiles with Loss and Acumulation.csv",row.names=F)
+write.csv(combined,"Lessivage Positive Profiles with Loss and Acumulation.csv",row.names=F)
