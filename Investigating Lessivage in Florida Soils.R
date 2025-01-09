@@ -368,7 +368,7 @@ incompletesand$check=round(incompletesand$TOT_SAND-(incompletesand$SAND_C+
 View(incompletesand)
 
 #now that you've dealt with missing data, it's time to QAQC the sand fraction data by calculating
-#the absolute value of the difference beteewn reported total sand the sum of sand fractions
+#the absolute value of the difference between reported total sand the sum of sand fractions
 data$check=round(abs(data$TOT_SAND-(data$SAND_VC+data$SAND_C+data$SAND_M+data$SAND_F+data$SAND_VF)),1)
 
 #see that you have 23 horizons from 21 profiles where the sum of sand fractions is not within 2% of total sand  
@@ -431,7 +431,7 @@ final=final[,c(1:5,15:16,19:20,6:13)]	#reorganize data.frame column and drop som
 str(final)
 View(final)
 
-##SAVE Final Database Data####
+###SAVE Final Database Data####
 write.csv(final,"Final Lessivage Database.csv",row.names=F)
 
 #read in data for the positive profile horizons after profiles with UI>0.8 have been removed 
