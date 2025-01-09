@@ -1,5 +1,5 @@
 #Read in Data####################
-setwd("D:/Lessivage in Florida Soils/Lessivage Data")
+setwd("")
 
 data=data.frame(read.csv("Profile Database.csv",header=TRUE))
 str(data)
