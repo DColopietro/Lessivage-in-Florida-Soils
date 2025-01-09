@@ -1,5 +1,5 @@
 #Read in Data####
-setwd('D:/Lessivage in Florida Soils/Lessivage Data and R Code')
+setwd('')
 data=data.frame(read.csv("Raw Data.csv",header=TRUE))
 
 #see that you have 8272 horizons from 1288 profiles 
@@ -361,9 +361,6 @@ for(i in 1:nrow(data)){
 incompletesand=incompletesand[!duplicated(incompletesand[ , c("HorzIndex")]),]
 length(unique(incompletesand$ID))
 View(incompletesand)
-
-#for profiles S13_006 and S32_003 you cannot do much because all sand fractions are missing
-#in the entire profile (S13_006) or in particular horizons (S32_003)
 
 incompletesand$check=round(incompletesand$TOT_SAND-(incompletesand$SAND_C+
                                                       incompletesand$SAND_M+incompletesand$SAND_F+incompletesand$SAND_VF),1)
