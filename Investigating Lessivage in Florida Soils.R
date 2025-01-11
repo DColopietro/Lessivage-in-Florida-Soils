@@ -40,8 +40,8 @@ holder=data.frame()
 profiles=(unique(dataoi$ID))
 for(i in 1:length(profiles)){
   
-  temp=subset(dataoi,dataoi$ID==profiles[i])			#select one profile at a time	
-  temp=temp[order(temp$HorzIndex),]					#order the profile by depth
+  temp=subset(dataoi,dataoi$ID==profiles[i])		#select one profile at a time	
+  temp=temp[order(temp$HorzIndex),]		#order the profile by depth
   holder=rbind(holder,temp)           #compile profiles
   
 }
@@ -69,13 +69,13 @@ criteria.one.horizons=data.frame()
 profiles=(unique(dataoi$ID))
 for(i in 1:length(profiles)){
 	
-	temp=subset(dataoi,dataoi$ID==profiles[i])									#select one profile at a time	
-	temp=temp[order(temp$HorzIndex),]											#order the profile by depth
+	temp=subset(dataoi,dataoi$ID==profiles[i])				#select one profile at a time	
+	temp=temp[order(temp$HorzIndex),]				#order the profile by depth
 	
-	for(j in 2:nrow(temp)){								#starting at 2nd horizon, evaluate each horizon separately
+	for(j in 2:nrow(temp)){					#starting at 2nd horizon, evaluate each horizon separately
 		temp2=rbind(
 			subset(temp,temp[j,4]-temp$BOTT_DEP<30 & temp[j,4]-temp$BOTT_DEP>=0),			#combine overlying horizons within 30cm
-		temp[j,])														#with the horizon of interest 		
+		temp[j,])											#with the horizon of interest 		
 	
 		for (k in 1:(nrow(temp2))){ 
 			if(temp2$TOT_CLAY[k]<15 & temp2$TOT_CLAY[nrow(temp2)]-temp2$TOT_CLAY[k]>=3){ 		#evaluate each 30cm bundle for criteria 1
@@ -98,16 +98,16 @@ criteria.two.horizons=data.frame()
 profiles=(unique(dataoi$ID))
 for(i in 1:length(profiles)){
 	
-	temp=subset(dataoi,dataoi$ID==profiles[i])									#select one profile at a time	
-	temp=temp[order(temp$HorzIndex),]											#order the profile by depth
+	temp=subset(dataoi,dataoi$ID==profiles[i])				#select one profile at a time	
+	temp=temp[order(temp$HorzIndex),]				#order the profile by depth
 	
-	for(j in 2:nrow(temp)){													#starting at 2nd horizon, evaluate each horizon seperately
+	for(j in 2:nrow(temp)){					#starting at 2nd horizon, evaluate each horizon separately
 		temp2=rbind(
 			subset(temp,temp[j,4]-temp$BOTT_DEP<30 & temp[j,4]-temp$BOTT_DEP>=0),			#combine overlying horizons within 30cm
-		temp[j,])														#with the horizon of interest 		
+		temp[j,])											#with the horizon of interest 		
 	
 		for (k in 1:(nrow(temp2))){ 
-			if(temp2$TOT_CLAY[k]>=15 & temp2$TOT_CLAY[k]<=40 & 						#evaluate each 30cm bundle for criteria 2
+			if(temp2$TOT_CLAY[k]>=15 & temp2$TOT_CLAY[k]<=40 & 					#evaluate each 30cm bundle for criteria 2
 			temp2$TOT_CLAY[nrow(temp2)]>=temp2$TOT_CLAY[k]*1.2){
 			criteria.two.horizons=rbind(criteria.two.horizons,temp2[nrow(temp2),c(1:4)])} 	#record HorzIndex, ID, HNAME, and TOP_DEP of each positive case
 }}}
@@ -128,13 +128,13 @@ criteria.three.horizons=data.frame()
 profiles=(unique(dataoi$ID))
 for(i in 1:length(profiles)){
 	
-	temp=subset(dataoi,dataoi$ID==profiles[i])									#select one profile at a time	
-	temp=temp[order(temp$HorzIndex),]											#order the profile by depth
+	temp=subset(dataoi,dataoi$ID==profiles[i])				#select one profile at a time	
+	temp=temp[order(temp$HorzIndex),]				#order the profile by depth
 	
-	for(j in 2:nrow(temp)){													#starting at 2nd horizon, evaluate each horizon seperately
+	for(j in 2:nrow(temp)){					#starting at 2nd horizon, evaluate each horizon separately
 		temp2=rbind(
 			subset(temp,temp[j,4]-temp$BOTT_DEP<30 & temp[j,4]-temp$BOTT_DEP>=0),			#combine overlying horizons within 30cm
-		temp[j,])														#with the horizon of interest 		
+		temp[j,])											#with the horizon of interest 		
 	
 		for (k in 1:(nrow(temp2))){ 
 			if(temp2$TOT_CLAY[k]>40 & temp2$TOT_CLAY[nrow(temp2)]-temp2$TOT_CLAY[k]>=8){		#evaluate each 30cm bundle for criteria 3
@@ -247,15 +247,15 @@ holder=data.frame()
 profiles=(unique(criteria.one.data$ID))
 for(i in 1:length(profiles)){ 
   temp=subset(criteria.one.data,criteria.one.data$ID==profiles[i]) 		#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]							#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]					#order profile by depth
   
   target=subset(temp,temp$ZONE=="top")$TOP_DEP					#identify the depth of "top"
   
-  for(j in 1:nrow(temp)){									#identify any horizon above top as "loss" 
+  for(j in 1:nrow(temp)){							#identify any horizon above top as "loss" 
     if(temp[j,4]<target){temp[j,15]="loss"}
   }
   
-  holder=rbind(holder,temp)								#hold and compile modified records here
+  holder=rbind(holder,temp)							#hold and compile modified records here
 }
 criteria.one.data=holder
 
@@ -264,15 +264,15 @@ holder=data.frame()
 profiles=(unique(criteria.two.data$ID))
 for(i in 1:length(profiles)){ 
   temp=subset(criteria.two.data,criteria.two.data$ID==profiles[i]) 		#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]							#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]					#order profile by depth
   
   target=subset(temp,temp$ZONE=="top")$TOP_DEP					#identify the depth of "top"
   
-  for(j in 1:nrow(temp)){									#identify any horizon above top as "loss" 
+  for(j in 1:nrow(temp)){							#identify any horizon above top as "loss" 
     if(temp[j,4]<target){temp[j,15]="loss"}
   }
   
-  holder=rbind(holder,temp)								#hold and compile modified records here
+  holder=rbind(holder,temp)							#hold and compile modified records here
 }
 criteria.two.data=holder
 
@@ -285,18 +285,18 @@ holder=data.frame()
 profiles=(unique(criteria.one.data$ID))
 for(i in 1:length(profiles)){ 
   temp=subset(criteria.one.data,criteria.one.data$ID==profiles[i]) 		#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]							#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]					#order profile by depth
   
   a=subset(temp,temp$ZONE=="top")[,c(4,5,13)]					#find "top" then set target clay for criteria one
-  thick=a[,2]-a[,1]										#by calculating the thickness weighted average 
-  weightedthick=thick/sum(thick)							#of clay conc. in zone of loss + 3%
+  thick=a[,2]-a[,1]								#by calculating the thickness weighted average 
+  weightedthick=thick/sum(thick)						#of clay conc. in zone of loss + 3%
   target=sum(weightedthick*a$TOT_CLAY)+3
   
-  for(k in 1:nrow(temp)){									#compare clay in horizons below "top" to the target clay
+  for(k in 1:nrow(temp)){							#compare clay in horizons below "top" to the target clay
     if(temp[k,15]=="other" & temp[k,13]>=target){temp[k,15]="gain"}
   }
   
-  holder=rbind(holder,temp)								#hold and compile modified records here
+  holder=rbind(holder,temp)							#hold and compile modified records here
 }
 criteria.one.data=holder
 
@@ -305,18 +305,18 @@ holder=data.frame()
 profiles=(unique(criteria.two.data$ID))
 for(i in 1:length(profiles)){ 
   temp=subset(criteria.two.data,criteria.two.data$ID==profiles[i]) 		#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]							#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]					#order profile by depth
   
   a=subset(temp,temp$ZONE=="top")[,c(4,5,13)]					#find "top" then set target clay for criteria one
-  thick=a[,2]-a[,1]										#by calculating the thickness weighted average 
-  weightedthick=thick/sum(thick)							#of clay conc. in zone of loss x 1.2
+  thick=a[,2]-a[,1]								#by calculating the thickness weighted average 
+  weightedthick=thick/sum(thick)						#of clay conc. in zone of loss x 1.2
   target=sum(weightedthick*a$TOT_CLAY)*1.2
   
-  for(k in 1:nrow(temp)){									#compare clay in horizons below "top" to the target clay
+  for(k in 1:nrow(temp)){							#compare clay in horizons below "top" to the target clay
     if(temp[k,15]=="other" & temp[k,13]>=target){temp[k,15]="gain"}
   }
   
-  holder=rbind(holder,temp)								#hold and compile modified records here
+  holder=rbind(holder,temp)							#hold and compile modified records here
 }
 criteria.two.data=holder
 
@@ -363,10 +363,6 @@ incompletesand=incompletesand[!duplicated(incompletesand[ , c("HorzIndex")]),]
 length(unique(incompletesand$ID))
 View(incompletesand)
 
-incompletesand$check=round(incompletesand$TOT_SAND-(incompletesand$SAND_C+
-                                                      incompletesand$SAND_M+incompletesand$SAND_F+incompletesand$SAND_VF),1)
-View(incompletesand)
-
 #now that you've dealt with missing data, it's time to QAQC the sand fraction data by calculating
 #the absolute value of the difference between reported total sand the sum of sand fractions
 data$check=round(abs(data$TOT_SAND-(data$SAND_VC+data$SAND_C+data$SAND_M+data$SAND_F+data$SAND_VF)),1)
@@ -399,13 +395,13 @@ holder=data.frame()
 profiles=(unique(dataforUI$ID))
 for(i in 1:length(profiles)){ 
   temp=subset(dataforUI,dataforUI$ID==profiles[i]) 			#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]						#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]				#order profile by depth
   
-  for(j in 2:nrow(temp)){								#calculate uniformity index of each horizon 
+  for(j in 2:nrow(temp)){						#calculate uniformity index of each horizon 
     temp[j,19]=abs(temp[j,18]/temp[j-1,18]-1)
   }
   
-  holder=rbind(holder,temp)							#hold and compile calculations
+  holder=rbind(holder,temp)						#hold and compile calculations
 }
 final=holder
 colnames(final)[19]="UI"
@@ -426,7 +422,7 @@ for (i in 1:nrow(final)){
 }
 
 #cleaning the dataframe
-final$UI=round(final$UI,3)			#get rid of useless decimal places
+final$UI=round(final$UI,3)			#rounding to the thousandth place 
 final=final[,c(1:5,15:16,19:20,6:13)]	#reorganize data.frame column and drop some things you don't need
 str(final)
 View(final)
@@ -445,17 +441,17 @@ temp2<-data.frame()
 for(i in 1:length(profiles)){ 
   
   temp=subset(Horizons, Horizons$ID==profiles[i]) 		#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]					#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]			#order profile by depth
   
-  a=subset(temp,temp$ZONE=="gain")[,c(2,5,7)]			#Selecting horizons from each profile identified as being in the zone of accumulation	
-  a[,2]<-as.numeric(a[,2])						#converting factors to numeric values
+  a=subset(temp,temp$ZONE=="gain")[,c(2,5,7)]			#selecting horizons from each profile identified as being in the zone of accumulation	
+  a[,2]<-as.numeric(a[,2])					#converting factors to numeric values
   
-  Zgain=sum(a$Z)							 	#sum all the horizons in the zone of accumulation to get a total thickness
+  Zgain=sum(a$Z)					 	#sum all the horizons in the zone of accumulation to get a total thickness
   
-  b=subset(temp,temp$ZONE=="loss")[,c(2,5,7)]			#Selecting horizons from each profile identified as being in the zone of loss	
-  b[,2]<-as.numeric(b[,2])						#converting factors to numeric values
+  b=subset(temp,temp$ZONE=="loss")[,c(2,5,7)]			#selecting horizons from each profile identified as being in the zone of loss	
+  b[,2]<-as.numeric(b[,2])					#converting factors to numeric values
   
-  Zloss=sum(b$Z)								#sum all the horizons in the zone of loss to get a total thickness
+  Zloss=sum(b$Z)						#sum all the horizons in the zone of loss to get a total thickness
   
   dull<-as.character(temp[1,2])
   temp2[i,1]<-dull
@@ -477,14 +473,14 @@ profiles=(unique(Horizons$ID))
 for(i in 1:length(profiles)){ 
   
   temp=subset(Horizons, Horizons$ID==profiles[i]) 		#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]					#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]			#order profile by depth
   
-  a=subset(temp,temp$ZONE=="loss")[,c(1,5,7)]			#Selecting horizons from each profile identified as being in the zone of loss	
+  a=subset(temp,temp$ZONE=="loss")[,c(1,5,7)]			#selecting horizons from each profile identified as being in the zone of loss	
   
   a[,4]=a[,2]/sum(a$Z)	
   
   temp2=a[,c(1,4)]	
-  holder=rbind(holder,temp2)						#hold and compile modified records here
+  holder=rbind(holder,temp2)					#hold and compile modified records here
 }
 
 Weightedcontribution=holder
@@ -499,14 +495,14 @@ profiles=(unique(Horizons$ID))
 for(i in 1:length(profiles)){ 
   
   temp=subset(Horizons, Horizons$ID==profiles[i]) 		#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]					#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]			#order profile by depth
   
-  a=subset(temp,temp$ZONE=="gain")[,c(1,5,7)]			#Selecting horizons from each profile identified as being in the zone of accumulation	
+  a=subset(temp,temp$ZONE=="gain")[,c(1,5,7)]			#selecting horizons from each profile identified as being in the zone of accumulation	
   
   a[,4]=a[,2]/sum(a$Z)	
   
   temp2=a[,c(1,4)]	
-  holder=rbind(holder,temp2)						#hold and compile modified records here
+  holder=rbind(holder,temp2)					#hold and compile modified records here
 }
 
 Weightedcontribution=holder
@@ -528,16 +524,16 @@ temp2<-data.frame()
 for(i in 1:length(profiles)){ 
   
   temp=subset(Horizons, Horizons$ID==profiles[i]) 		#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]					#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]			#order profile by depth
   
-  a=subset(temp,temp$ZONE=="gain")[,c(1,2,6,12)]			#Selecting horizons from each profile identified as being in the zone of accumulation	
-  a[,3]<- as.numeric(as.character(a[,3]))				#converting factors to numeric values
+  a=subset(temp,temp$ZONE=="gain")[,c(1,2,6,12)]		#selecting horizons from each profile identified as being in the zone of accumulation	
+  a[,3]<- as.numeric(as.character(a[,3]))			#converting factors to numeric values
   
   averageC=a[,3]*a[,4]
   I=sum(averageC)
   
-  b=subset(temp,temp$ZONE=="loss")[,c(1,2,6,12)]			#Selecting horizons from each profile identified as being in the zone of loss	
-  b[,3]<- as.numeric(as.character(b[,3]))				#converting factors to numeric values
+  b=subset(temp,temp$ZONE=="loss")[,c(1,2,6,12)]		#selecting horizons from each profile identified as being in the zone of loss	
+  b[,3]<- as.numeric(as.character(b[,3]))			#converting factors to numeric values
   
   averageC=b[,3]*b[,4]
   E=sum(averageC)
@@ -572,16 +568,16 @@ temp2<-data.frame()
 for(i in 1:length(profiles)){ 
   
   temp=subset(Horizons, Horizons$ID==profiles[i]) 		#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]					#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]			#order profile by depth
   
-  a=subset(temp,temp$ZONE=="gain")[,c(2,6,10)]			#Selecting horizons from each profile identified as being in the zone of accumulation	
-  a[,2]<- as.numeric(as.character(a[,2]))				#converting factors to numeric values
+  a=subset(temp,temp$ZONE=="gain")[,c(2,6,10)]			#selecting horizons from each profile identified as being in the zone of accumulation	
+  a[,2]<- as.numeric(as.character(a[,2]))			#converting factors to numeric values
   
   averageSand=a[,2]*a[,3]
   I_Sand=sum(averageSand)
   
-  b=subset(temp,temp$ZONE=="loss")[,c(2,6,10)]			#Selecting horizons from each profile identified as being in the zone of loss	
-  b[,2]<- as.numeric(as.character(b[,2]))				#converting factors to numeric values
+  b=subset(temp,temp$ZONE=="loss")[,c(2,6,10)]			#selecting horizons from each profile identified as being in the zone of loss	
+  b[,2]<- as.numeric(as.character(b[,2]))			#converting factors to numeric values
   
   averageSand=b[,2]*b[,3]
   E_Sand=sum(averageSand)
@@ -607,16 +603,16 @@ temp2<-data.frame()
 for(i in 1:length(profiles)){ 
   
   temp=subset(Horizons, Horizons$ID==profiles[i]) 		#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]					#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]			#order profile by depth
   
-  a=subset(temp,temp$ZONE=="gain")[,c(2,6,11)]			#Selecting horizons from each profile identified as being in the zone of accumulation	
-  a[,2]<- as.numeric(as.character(a[,2]))				#converting factors to numeric values
+  a=subset(temp,temp$ZONE=="gain")[,c(2,6,11)]			#selecting horizons from each profile identified as being in the zone of accumulation	
+  a[,2]<- as.numeric(as.character(a[,2]))			#converting factors to numeric values
   
   averageSilt=a[,2]*a[,3]
   I_Silt=sum(averageSilt)
   
-  b=subset(temp,temp$ZONE=="loss")[,c(2,6,11)]			#Selecting horizons from each profile identified as being in the zone of loss	
-  b[,2]<- as.numeric(as.character(b[,2]))				#converting factors to numeric values
+  b=subset(temp,temp$ZONE=="loss")[,c(2,6,11)]			#selecting horizons from each profile identified as being in the zone of loss	
+  b[,2]<- as.numeric(as.character(b[,2]))			#converting factors to numeric values
   
   averageSilt=b[,2]*b[,3]
   E_Silt=sum(averageSilt)
@@ -641,16 +637,16 @@ temp2<-data.frame()
 for(i in 1:length(profiles)){ 
   
   temp=subset(Horizons, Horizons$ID==profiles[i]) 		#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]					#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]			#order profile by depth
   
-  a=subset(temp,temp$ZONE=="gain")[,c(2,6,12)]			#Selecting horizons from each profile identified as being in the zone of accumulation	
-  a[,2]<- as.numeric(as.character(a[,2]))				#converting factors to numeric values
+  a=subset(temp,temp$ZONE=="gain")[,c(2,6,12)]			#selecting horizons from each profile identified as being in the zone of accumulation	
+  a[,2]<- as.numeric(as.character(a[,2]))			#converting factors to numeric values
   
   averageClay=a[,2]*a[,3]
   I_Clay=sum(averageClay)
   
-  b=subset(temp,temp$ZONE=="loss")[,c(2,6,12)]			#Selecting horizons from each profile identified as being in the zone of loss	
-  b[,2]<- as.numeric(as.character(b[,2]))				#converting factors to numeric values
+  b=subset(temp,temp$ZONE=="loss")[,c(2,6,12)]			#selecting horizons from each profile identified as being in the zone of loss	
+  b[,2]<- as.numeric(as.character(b[,2]))			#converting factors to numeric values
   
   averageClay=b[,2]*b[,3]
   E_Clay=sum(averageClay)
@@ -680,16 +676,16 @@ temp2<-data.frame()
 for(i in 1:length(profiles)){ 
   
   temp=subset(Horizons, Horizons$ID==profiles[i]) 		#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]					#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]			#order profile by depth
   
-  a=subset(temp,temp$ZONE=="gain")[,c(2,6,23)]			#Selecting horizons from each profile identified as being in the zone of accumulation	
-  a[,2]<- as.numeric(as.character(a[,2]))				#converting factors to numeric values
+  a=subset(temp,temp$ZONE=="gain")[,c(2,6,23)]			#selecting horizons from each profile identified as being in the zone of accumulation	
+  a[,2]<- as.numeric(as.character(a[,2]))			#converting factors to numeric values
   
   averageOC=a[,2]*a[,3]
   I_OC=sum(averageOC)
   
-  b=subset(temp,temp$ZONE=="loss")[,c(2,6,23)]			#Selecting horizons from each profile identified as being in the zone of loss	
-  b[,2]<- as.numeric(as.character(b[,2]))				#converting factors to numeric values
+  b=subset(temp,temp$ZONE=="loss")[,c(2,6,23)]			#selecting horizons from each profile identified as being in the zone of loss	
+  b[,2]<- as.numeric(as.character(b[,2]))			#converting factors to numeric values
   
   averageOC=b[,2]*b[,3]
   E_OC=sum(averageOC)
@@ -717,16 +713,16 @@ temp2<-data.frame()
 for(i in 1:length(profiles)){ 
   
   temp=subset(Horizons, Horizons$ID==profiles[i]) 		#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]					#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]			#order profile by depth
   
-  a=subset(temp,temp$ZONE=="gain")[,c(2,6,22)]			#Selecting horizons from each profile identified as being in the zone of accumulation	
-  a[,2]<- as.numeric(as.character(a[,2]))				#converting factors to numeric values
+  a=subset(temp,temp$ZONE=="gain")[,c(2,6,22)]			#selecting horizons from each profile identified as being in the zone of accumulation	
+  a[,2]<- as.numeric(as.character(a[,2]))			#converting factors to numeric values
   
   averageF=a[,2]*a[,3]
   I_F=sum(averageF)
   
-  b=subset(temp,temp$ZONE=="loss")[,c(2,6,22)]			#Selecting horizons from each profile identified as being in the zone of loss	
-  b[,2]<- as.numeric(as.character(b[,2]))				#converting factors to numeric values
+  b=subset(temp,temp$ZONE=="loss")[,c(2,6,22)]			#selecting horizons from each profile identified as being in the zone of loss	
+  b[,2]<- as.numeric(as.character(b[,2]))			#converting factors to numeric values
   
   averageF=b[,2]*b[,3]
   E_F=sum(averageF)
@@ -753,16 +749,16 @@ temp2<-data.frame()
 for(i in 1:length(profiles)){ 
   
   temp=subset(Horizons, Horizons$ID==profiles[i]) 		#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]					#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]			#order profile by depth
   
-  a=subset(temp,temp$ZONE=="gain")[,c(2,6,24)]			#Selecting horizons from each profile identified as being in the zone of accumulation	
-  a[,2]<- as.numeric(as.character(a[,2]))				#converting factors to numeric values
+  a=subset(temp,temp$ZONE=="gain")[,c(2,6,24)]			#selecting horizons from each profile identified as being in the zone of accumulation	
+  a[,2]<- as.numeric(as.character(a[,2]))			#converting factors to numeric values
   
   averagepHw=a[,2]*a[,3]
   I_pHw=sum(averagepHw)
   
-  b=subset(temp,temp$ZONE=="loss")[,c(2,6,24)]			#Selecting horizons from each profile identified as being in the zone of loss	
-  b[,2]<- as.numeric(as.character(b[,2]))				#converting factors to numeric values
+  b=subset(temp,temp$ZONE=="loss")[,c(2,6,24)]			#selecting horizons from each profile identified as being in the zone of loss	
+  b[,2]<- as.numeric(as.character(b[,2]))			#converting factors to numeric values
   
   averagepHw=b[,2]*b[,3]
   E_pHw=sum(averagepHw)
@@ -789,16 +785,16 @@ temp2<-data.frame()
 for(i in 1:length(profiles)){ 
   
   temp=subset(Horizons, Horizons$ID==profiles[i]) 		#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]					#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]			#order profile by depth
   
-  a=subset(temp,temp$ZONE=="gain")[,c(2,6,25)]			#Selecting horizons from each profile identified as being in the zone of accumulation	
-  a[,2]<- as.numeric(as.character(a[,2]))				#converting factors to numeric values
+  a=subset(temp,temp$ZONE=="gain")[,c(2,6,25)]			#selecting horizons from each profile identified as being in the zone of accumulation	
+  a[,2]<- as.numeric(as.character(a[,2]))			#converting factors to numeric values
   
   averagepHkcl=a[,2]*a[,3]
   I_pHkcl=sum(averagepHkcl)
   
-  b=subset(temp,temp$ZONE=="loss")[,c(2,6,25)]			#Selecting horizons from each profile identified as being in the zone of loss	
-  b[,2]<- as.numeric(as.character(b[,2]))				#converting factors to numeric values
+  b=subset(temp,temp$ZONE=="loss")[,c(2,6,25)]			#selecting horizons from each profile identified as being in the zone of loss	
+  b[,2]<- as.numeric(as.character(b[,2]))			#converting factors to numeric values
   
   averagepHkcl=b[,2]*b[,3]
   E_pHkcl=sum(averagepHkcl)
@@ -825,17 +821,17 @@ temp2<-data.frame()
 for(i in 1:length(profiles)){ 
   
   temp=subset(Horizons, Horizons$ID==profiles[i]) 		#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]					#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]			#order profile by depth
   
-  a=subset(temp,temp$ZONE=="gain")[,c(2,6,30)]			#Selecting horizons from each profile identified as being in the zone of accumulation	
-  a[,2]<- as.numeric(as.character(a[,2]))				#converting factors to numeric values
+  a=subset(temp,temp$ZONE=="gain")[,c(2,6,30)]			#selecting horizons from each profile identified as being in the zone of accumulation	
+  a[,2]<- as.numeric(as.character(a[,2]))			#converting factors to numeric values
   a[,3]<- as.numeric(as.character(a[,3]))	
   
   averageTEB=a[,2]*a[,3]
   I_TEB=sum(averageTEB)
   
-  b=subset(temp,temp$ZONE=="loss")[,c(2,6,30)]			#Selecting horizons from each profile identified as being in the zone of loss	
-  b[,2]<- as.numeric(as.character(b[,2]))				#converting factors to numeric values
+  b=subset(temp,temp$ZONE=="loss")[,c(2,6,30)]			#selecting horizons from each profile identified as being in the zone of loss	
+  b[,2]<- as.numeric(as.character(b[,2]))			#converting factors to numeric values
   b[,3]<- as.numeric(as.character(b[,3]))
   
   averageTEB=b[,2]*b[,3]
@@ -863,17 +859,17 @@ temp2<-data.frame()
 for(i in 1:length(profiles)){ 
   
   temp=subset(Horizons, Horizons$ID==profiles[i]) 		#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]					#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]			#order profile by depth
   
-  a=subset(temp,temp$ZONE=="gain")[,c(2,6,31)]			#Selecting horizons from each profile identified as being in the zone of accumulation	
-  a[,2]<- as.numeric(as.character(a[,2]))				#converting factors to numeric values
+  a=subset(temp,temp$ZONE=="gain")[,c(2,6,31)]			#selecting horizons from each profile identified as being in the zone of accumulation	
+  a[,2]<- as.numeric(as.character(a[,2]))			#converting factors to numeric values
   a[,3]<- as.numeric(as.character(a[,3]))	
   
   averageCEC=a[,2]*a[,3]
   I_CEC=sum(averageCEC)
   
-  b=subset(temp,temp$ZONE=="loss")[,c(2,6,31)]			#Selecting horizons from each profile identified as being in the zone of loss	
-  b[,2]<- as.numeric(as.character(b[,2]))				#converting factors to numeric values
+  b=subset(temp,temp$ZONE=="loss")[,c(2,6,31)]			#selecting horizons from each profile identified as being in the zone of loss	
+  b[,2]<- as.numeric(as.character(b[,2]))			#converting factors to numeric values
   b[,3]<- as.numeric(as.character(b[,3]))	
   
   averageCEC=b[,2]*b[,3]
@@ -901,17 +897,17 @@ temp2<-data.frame()
 for(i in 1:length(profiles)){ 
   
   temp=subset(Horizons, Horizons$ID==profiles[i]) 		#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]					#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]			#order profile by depth
   
-  a=subset(temp,temp$ZONE=="gain")[,c(2,6,32)]			#Selecting horizons from each profile identified as being in the zone of accumulation	
-  a[,2]<- as.numeric(as.character(a[,2]))				#converting factors to numeric values
+  a=subset(temp,temp$ZONE=="gain")[,c(2,6,32)]			#selecting horizons from each profile identified as being in the zone of accumulation	
+  a[,2]<- as.numeric(as.character(a[,2]))			#converting factors to numeric values
   a[,3]<- as.numeric(as.character(a[,3]))
   
   averagebasesat=a[,2]*a[,3]
   I_BaseSat=sum(averagebasesat)
   
-  b=subset(temp,temp$ZONE=="loss")[,c(2,6,32)]			#Selecting horizons from each profile identified as being in the zone of loss	
-  b[,2]<- as.numeric(as.character(b[,2]))				#converting factors to numeric values
+  b=subset(temp,temp$ZONE=="loss")[,c(2,6,32)]			#selecting horizons from each profile identified as being in the zone of loss	
+  b[,2]<- as.numeric(as.character(b[,2]))			#converting factors to numeric values
   b[,3]<- as.numeric(as.character(b[,3]))
   
   averagebasesat=b[,2]*b[,3]
@@ -939,16 +935,16 @@ temp2<-data.frame()
 for(i in 1:length(profiles)){ 
   
   temp=subset(Horizons, Horizons$ID==profiles[i]) 		#select one profile at a time
-  temp=temp[order(temp$TOP_DEP),]					#order profile by depth
+  temp=temp[order(temp$TOP_DEP),]			#order profile by depth
   
-  a=subset(temp,temp$ZONE=="gain")[,c(2,6,33)]			#Selecting horizons from each profile identified as being in the zone of accumulation	
-  a[,2]<- as.numeric(as.character(a[,2]))				#converting factors to numeric values
+  a=subset(temp,temp$ZONE=="gain")[,c(2,6,33)]			#selecting horizons from each profile identified as being in the zone of accumulation	
+  a[,2]<- as.numeric(as.character(a[,2]))			#converting factors to numeric values
   
   averageEXTRACIDITY=a[,2]*a[,3]
   I_EXTRACIDITY=sum(averageEXTRACIDITY)
   
-  b=subset(temp,temp$ZONE=="loss")[,c(2,6,12)]			#Selecting horizons from each profile identified as being in the zone of loss	
-  b[,2]<- as.numeric(as.character(b[,2]))				#converting factors to numeric values
+  b=subset(temp,temp$ZONE=="loss")[,c(2,6,12)]			#selecting horizons from each profile identified as being in the zone of loss	
+  b[,2]<- as.numeric(as.character(b[,2]))			#converting factors to numeric values
   
   averageEXTRACIDITY=b[,2]*b[,3]
   E_EXTRACIDITY=sum(averageEXTRACIDITY)
